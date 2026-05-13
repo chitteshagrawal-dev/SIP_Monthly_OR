@@ -779,7 +779,7 @@ function CountryTab(){
 // ══════════════════════════════════════════════════════════════════════════════
 // APP SHELL
 // ══════════════════════════════════════════════════════════════════════════════
-export default function App({onViewSessionJourneys}={}){
+export default function SipMonthlyReport({onViewSessionJourneys}={}){
   const[tab,setTab]=useState("pulse");
   const tabs=[
     {k:"pulse",l:"SIP Pulse & Benchmarks"},
