@@ -304,17 +304,14 @@ function ChannelTab({onViewSessionJourneys}){
         })}
       </div>
 
-      {/* Friendly CTA — visible when NULL is selected */}
+      {/* Session Journeys CTA — visible when NULL is selected */}
       {sel==="NULL"&&onViewSessionJourneys&&(
-        <div style={{marginBottom:16,padding:"12px 16px",borderRadius:10,background:"#fafbfc",border:"1px solid #e2e8f0",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}}>
-          <div style={{...f,fontSize:12,color:"#64748b",lineHeight:1.5}}>
-            <span style={{color:"#334155",fontWeight:500}}>Want to understand the journey of these 750 NULL sessions?</span> Explore entry patterns, archetypes & hidden Tel/CRM signals.
+        <div style={{...cd,marginBottom:16,background:"#f5f3ff",border:"1.5px solid #ddd6fe",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
+          <div>
+            <div style={{...f,fontSize:13,fontWeight:700,color:"#5b21b6",marginBottom:2}}>🔍 NULL Session Deep Dive Available</div>
+            <div style={{...f,fontSize:12,color:"#6d28d9"}}>Journey-level analysis of all 750 NULL sessions (Jan–Apr 2026) · Surfaces hidden Telecalling/CRM patterns & cross-sell opportunities</div>
           </div>
-          <button onClick={onViewSessionJourneys} style={{...f,padding:"7px 14px",borderRadius:8,border:"1px solid #cbd5e1",background:"#fff",color:"#475569",cursor:"pointer",fontSize:12,fontWeight:600,whiteSpace:"nowrap",transition:"all .12s"}}
-            onMouseOver={e=>{e.currentTarget.style.background='#f1f5f9';e.currentTarget.style.borderColor='#94a3b8';}}
-            onMouseOut={e=>{e.currentTarget.style.background='#fff';e.currentTarget.style.borderColor='#cbd5e1';}}>
-            Open Session Deep Dive →
-          </button>
+          <button onClick={() => {console.log("Button clicked, calling onViewSessionJourneys"); onViewSessionJourneys();}} style={{...f,padding:"10px 18px",borderRadius:8,border:"1.5px solid #8b5cf6",background:"#8b5cf6",color:"#fff",cursor:"pointer",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>View Session Journeys →</button>
         </div>
       )}
 
@@ -782,7 +779,7 @@ function CountryTab(){
 // ══════════════════════════════════════════════════════════════════════════════
 // APP SHELL
 // ══════════════════════════════════════════════════════════════════════════════
-export default function App({onViewSessionJourneys}={}){
+export default function SipMonthlyReport({onViewSessionJourneys}={}){
   const[tab,setTab]=useState("pulse");
   const tabs=[
     {k:"pulse",l:"SIP Pulse & Benchmarks"},
