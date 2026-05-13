@@ -271,7 +271,7 @@ function PulseTab(){
 // ══════════════════════════════════════════════════════════════════════════════
 // TAB 2: CHANNEL DEEP DIVE
 // ══════════════════════════════════════════════════════════════════════════════
-function ChannelTab(){
+function ChannelTab({onViewSessionJourneys}){
   const[sel,setSel]=useState("DM");
   const[expanded,setExpanded]=useState(null);
   const chd=D.cd[sel]||[];
@@ -303,6 +303,17 @@ function ChannelTab(){
           );
         })}
       </div>
+
+      {/* Session Journeys CTA — visible when NULL is selected */}
+      {sel==="NULL"&&onViewSessionJourneys&&(
+        <div style={{...cd,marginBottom:16,background:"#f5f3ff",border:"1.5px solid #ddd6fe",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
+          <div>
+            <div style={{...f,fontSize:13,fontWeight:700,color:"#5b21b6",marginBottom:2}}>🔍 NULL Session Deep Dive Available</div>
+            <div style={{...f,fontSize:12,color:"#6d28d9"}}>Journey-level analysis of all 750 NULL sessions (Jan–Apr 2026) · Surfaces hidden Telecalling/CRM patterns & cross-sell opportunities</div>
+          </div>
+          <button onClick={onViewSessionJourneys} style={{...f,padding:"10px 18px",borderRadius:8,border:"1.5px solid #8b5cf6",background:"#8b5cf6",color:"#fff",cursor:"pointer",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>View Session Journeys →</button>
+        </div>
+      )}
 
       {/* KPI cards */}
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:16}}>
@@ -768,7 +779,7 @@ function CountryTab(){
 // ══════════════════════════════════════════════════════════════════════════════
 // APP SHELL
 // ══════════════════════════════════════════════════════════════════════════════
-export default function App(){
+export default function App({onViewSessionJourneys}={}){
   const[tab,setTab]=useState("pulse");
   const tabs=[
     {k:"pulse",l:"SIP Pulse & Benchmarks"},
@@ -808,7 +819,7 @@ export default function App(){
             {tabs.map(t=><TabBtn key={t.k} label={t.l} active={tab===t.k} onClick={()=>setTab(t.k)}/>)}
           </div>
           {tab==="pulse"&&<PulseTab/>}
-          {tab==="channel"&&<ChannelTab/>}
+          {tab==="channel"&&<ChannelTab onViewSessionJourneys={onViewSessionJourneys}/>}
           {tab==="donor"&&<DonorTab/>}
           {tab==="pagedevice"&&<PageDeviceTab/>}
           {tab==="country"&&<CountryTab/>}
