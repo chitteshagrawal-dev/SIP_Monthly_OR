@@ -311,7 +311,7 @@ function ChannelTab({onViewSessionJourneys}){
             <div style={{...f,fontSize:13,fontWeight:700,color:"#5b21b6",marginBottom:2}}>🔍 NULL Session Deep Dive Available</div>
             <div style={{...f,fontSize:12,color:"#6d28d9"}}>Journey-level analysis of all 750 NULL sessions (Jan–Apr 2026) · Surfaces hidden Telecalling/CRM patterns & cross-sell opportunities</div>
           </div>
-          <button onClick={onViewSessionJourneys} style={{...f,padding:"10px 18px",borderRadius:8,border:"1.5px solid #8b5cf6",background:"#8b5cf6",color:"#fff",cursor:"pointer",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>View Session Journeys →</button>
+          <button onClick={() => {console.log("Button clicked, calling onViewSessionJourneys"); onViewSessionJourneys();}} style={{...f,padding:"10px 18px",borderRadius:8,border:"1.5px solid #8b5cf6",background:"#8b5cf6",color:"#fff",cursor:"pointer",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>View Session Journeys →</button>
         </div>
       )}
 
